@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active: prod
+#    active: dev #多环境开发切换
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/dbgirl
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      #ddl-auto: create #会覆盖已有的表格 #Hibernate: drop table if exists girl
+                                      #Hibernate: create table girl (id integer not null auto_increment, age integer, name varchar(255), primary key (id))
+      #ddl-auto: validate #会验证，如果表结构和实体结构不一样会报错
+      #ddl-auto: create-drop #应用关闭时候会删除表格
+      ddl-auto: update #没有表格会创建，已有不会删除
+    show-sql: true

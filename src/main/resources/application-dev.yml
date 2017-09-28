@@ -1,0 +1,8 @@
+server:
+  port: 8080
+  context-path: /girl
+customValue: ViosonLee
+user:
+  name: vioson
+  age: 27
+  sex: girl
