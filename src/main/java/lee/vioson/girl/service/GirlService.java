@@ -1,5 +1,7 @@
-package lee.vioson.girl;
+package lee.vioson.girl.service;
 
+import lee.vioson.girl.enums.ResultStatus;
+import lee.vioson.girl.exceptions.GirlException;
 import lee.vioson.girl.model.Girl;
 import lee.vioson.girl.repository.GirlRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +30,19 @@ public class GirlService {
         girl2.setName("lili");
         girl2.setAge(23);
         girlRepository.save(girl2);
+    }
+
+    public void getFitGirl(Integer id) throws GirlException {
+        Girl one = girlRepository.findOne(id);
+        Integer age = one.getAge();
+        if (age > 10) {
+            throw new GirlException(ResultStatus.ERROR_PARAMS);
+        } else if (age < 10) {
+            throw new GirlException(ResultStatus.SUCCESSFUL);
+        }
+    }
+
+    public Girl findOne(Integer id) {
+        return girlRepository.findOne(id);
     }
 }
